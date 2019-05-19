@@ -1,49 +1,341 @@
-.dot {
-  width: 2rem;
-  height: 2rem;
-  border: 1px #ccc solid;
-  border-radius: 50%;
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+/* PAGE */
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 80vh;
+  background-color: aliceblue;
 }
 
-button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-}
-.sbutton {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-}
-.lbutton {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-}
-.left {
-  border: .2px solid black
+/* /////////  HEADER  ////////// */
+ .header { 
+  /* grid-row: 1; */
+  padding: 20px;
+
 }
 
-.right {
-  border: .2px solid black;
-  
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3em;
+ }
+
+ @media (min-width: 1367px) and (orientation: landscape) {
+  .title {
+    display: grid;
+    font-size: 4em;
+   
+  }
 }
 
-.canvas {
-  padding: 50px;
-  border: .2px solid black;
+ @media (min-width: 1025px) and (orientation: landscape) {
+  .title {
+    display: grid;
+    font-size: 5em;
+   
+  }
 }
 
-.frame {
-  align-content: center;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  border: .2px solid black;
+.nav {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+
+
+}
+ 
+/* /////// FOOTER ///////// */
+
+.footer {
+  grid-row: 3;
+  padding: 30px;
+  text-align: center;
 }
 
-.dropdown{
+/* CONTENT */
+
+.content {
+  grid-row: 2;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+/* ////// WHITE FLOATING SHEET //////  */
+
+.sheet {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  height: 110vh;
+  box-shadow: 4px 4px 2.5px 0px rgba(0,0,0,0.4); 
+  width: 75%;
+}
+
+.sheet-content {
+  padding: 5% 3% 5% 3%;
   display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+  .sheet-content {
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+}
+
+/* //////  colLeft is canvas AND BUTTONS//////  */
+
+.colLeft{
+  flex: 1;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* //// buttons under canvas ////// */
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* //////  CANVAS RIGHT TOOLBAR //////  */
+
+.colRight {
+  flex: 1;
+}
+
+/* /////////// TOOLBAR ////////////// */
+
+/* Mobile & Tablet Display */
+@media only screen and (max-width: 768px) {
+  
+  body {
+    background-color: aliceblue;
+  }
+
+  /* .title {
+    font-size: 28px;
+  } */
+  
+  .sheet {
+    box-shadow: none;
+    z-index: -1;
+    background-color: aliceblue;
+  }
+
+  .sheet-content {
+    transition: width 0.4s;
+    background-color: white;
+    width: 650px;
+    box-shadow: 5px 5px 5px;
+    margin-bottom: 20px;
+  }
+  
+  .Tools {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 100px;
+    width: 100%;
+  }
+
+  .colours {
+    grid-area: colours;
+  }
+
+  .coloursContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .frames { 
+    grid-area: frames;
+    margin-left: 15px;
+  }
+
+  .frames {
+    margin-top: 28px;
+  }
+
+  .framesContent {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .pens {
+    grid-area: pens;
+  }
+
+  .colour {
+    margin-left: 2px;
+    cursor: pointer;
+    border-radius: 2.5px;
+    z-index: 0;
+  }
+  
+  .colour:hover {
+    opacity: 0.7;
+  }
+  
+  .framePick {
+    position: relative;
+    top: 24.5px;
+    right: -24.5px;
+    border-radius: 10px;
+    z-index: 1;
+    margin-right: none;
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .pens {
+    color: grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .sbutton {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    margin-bottom: 3px;
+  
+  }
+  
+  .mbutton {
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-bottom: 3px;
+  }
+  
+  .lbutton {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom: 2px;
+  }
+
+  .list-button {
+    width: 3rem;
+  }
+
+  .pens h4 { 
+    opacity: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+  }
+
+  .pens {
+    display: flex;
+    flex-direction: row!important;
+  }
+
+  .pens button{
+    color: buttontext;
+  }
+
+  .footer {
+    opacity: 0px;
+    height: 0px;
+    margin-top: 0px;
+    padding-top: none;
+    padding-bottom: 15px;
+  }
+
+  .sheet{
+    height: 135vh;
+  }
+}
+
+.Tools {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+ 
+/* Smaller Laptops */
+@media only screen and (min-width: 1366px) {
+  
+ .Tools {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    width: 100%;
+  }
+
+  .colours {
+    margin-left: 40px;
+    margin-right: 5px;
+  }
+
+  .frames { 
+    margin-top: 13px;
+    margin-left: 20px;
+  }
+
+  .sheet{
+    height: 120vh;
+  }
+}
+
+/* 1200 * 800 screen size */
+@media only screen and (min-width: 1200px) {
+  
+  body {
+    background-color: aliceblue;
+  }
+
+  .Tools {
+     padding-top: 1vh;
+     padding-bottom: 1vh;
+     padding-right: 1vw;
+     padding-left: 1vw;
+     width: 100%;
+   }
+ 
+   .colours {
+     margin-left: 165px;
+     margin-right: 5px;
+   }
+ 
+   .frames { 
+     margin-top: 13px;
+     margin-left: 20px;
+   }
+  
+   .sheet{
+     padding-right: 200px;
+     height: 95vh;
+   }
+ }
+
+/*///////// COLOURS ////////// */
+
+.colours {
+  flex: 50%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: center;
 }
 
 .colour {
@@ -51,6 +343,10 @@ button {
   cursor: pointer;
   border-radius: 2.5px;
   z-index: 0;
+}
+
+.colour:hover {
+  opacity: 0.7;
 }
 
 .framePick {
@@ -64,10 +360,6 @@ button {
   font-size: 10px;
 }
 
-.colour:hover {
-  opacity: 0.7;
-}
-
 .frameSpan {
   top: 34.5px;
   right: -5px;
@@ -76,5 +368,111 @@ button {
   height: 0; 
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #f00;
+  border-top: 10px solid lightgrey;
+}
+
+h4 {
+  font-family: 'Press Start 2P', cursive;
+  padding-bottom: 10px;
+}
+ 
+/* FRAMES */
+
+.frames-pen {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.frame {
+  cursor: pointer;
+  width: 84px;
+  height: 60px;
+  border: .2px solid lightgrey;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-family: 'Press Start 2P', cursive;
+  align-content: center;
+}
+
+.frames {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saved {
+  font-size: 32px;
+  font-family: 'Press Start 2P', cursive;
+}
+.pens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  width: 4.1rem;
+  height: 4.1rem;
+  border-radius: 50%;
+}
+
+
+.sbutton {
+  background-color: rgb(104, 102, 102);
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-bottom: 3px;
+
+}
+
+.mbutton {
+  background-color: rgb(104, 102, 102);
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-bottom: 3px;
+}
+
+.lbutton {
+  background-color: rgb(104, 102, 102);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+/* . {
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 3px;
+
+} */
+
+a {
+   color: black;
+   margin-top: 5px;
+   margin-right: 15px;
+}
+
+ .fill-bucket {
+  background-image: url('images/fillbucket.png');
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 3px;
+  border: 0;
+}
+
+#drawCanvas {
+  z-index: 99!important;
 }

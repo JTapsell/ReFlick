@@ -6,7 +6,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
+      filename: path.join(__dirname, 'dev.sqlite3')
     },
     useNullAsDefault: true,
     migrations: {
@@ -22,15 +22,14 @@ module.exports = {
     connection: {
       filename: ':memory:'
     },
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, '../../tests/server/db/seeds')
+    },
     useNullAsDefault: true
   },
-
-  // migrations: {
-  //   directory: path.join(__dirname, 'migrations')
-  // },
-  // seeds: {
-  //   directory: path.join(__dirname, 'seeds')
-  // }
 
   staging: {
     client: 'postgresql',
